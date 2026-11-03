@@ -74,15 +74,32 @@ Kunjungi `http://localhost:4321` di browser Anda.
 
 ---
 
-## Production Build
+## Docker & Container Deployment
+
+Image produksi telah tersedia secara publik di Docker Hub:
 
 ```bash
-# Kompilasi static HTML/CSS/JS ke folder ./dist
-npm run build
+# Pull image dari Docker Hub
+docker pull randrandom/dynamic-profile:latest
 
-# Uji coba preview hasil build statis secara lokal
-npm run preview
+# Jalankan container di port 8080
+docker run -d --name my-portfolio -p 8080:80 randrandom/dynamic-profile:latest
 ```
+Akses di browser pada: `http://localhost:8080`
+
+### Build Docker Sendiri (Opsional)
+
+```bash
+# Build image secara lokal
+docker build -t dynamic-profile:local .
+
+# Jalankan container lokal
+docker run -d -p 8080:80 dynamic-profile:local
+```
+
+---
+
+## Production Build
 
 ---
 
