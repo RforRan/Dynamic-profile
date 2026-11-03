@@ -1,0 +1,45 @@
+# Dependencies & package managers
+node_modules/
+.pnp
+.pnp.js
+
+# Build artifacts
+dist/
+.astro/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Git & Repository metadata
+.git/
+.gitignore
+.github/
+
+# Antigravity & AI Agent directories
+.gemini/
+.impeccable/
+.vscode/
+.idea/
+
+# Documentation & Specifications
+DESIGN.md
+PRODUCT.md
+PRD.md
+README.md
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db
