@@ -1,0 +1,47 @@
+[
+  {
+    "id": 912850253,
+    "name": "Basic-Projek-Portofolio",
+    "fullName": "RforRan/Basic-Projek-Portofolio",
+    "description": "Portofolio berbasis web interaktif awal yang menampilkan berbagai proyek dan eksplorasi frontend.",
+    "url": "https://github.com/RforRan/Basic-Projek-Portofolio",
+    "homepage": null,
+    "stars": 0,
+    "forks": 0,
+    "primaryLanguage": "JavaScript",
+    "languageColor": "#f7df1e",
+    "topics": ["portfolio", "frontend", "web"],
+    "updatedAt": "2025-01-06T09:12:00Z",
+    "formattedDate": "Jan 2025"
+  },
+  {
+    "id": 876543210,
+    "name": "WebSIG-Jateng",
+    "fullName": "RforRan/WebSIG-Jateng",
+    "description": "Sistem Informasi Geografis (SIG) berbasis web untuk visualisasi dan pemetaan data spasial di wilayah Jawa Tengah.",
+    "url": "https://github.com/RforRan/WebSIG-Jateng",
+    "homepage": null,
+    "stars": 0,
+    "forks": 0,
+    "primaryLanguage": "JavaScript",
+    "languageColor": "#f7df1e",
+    "topics": ["gis", "websig", "mapping", "leaflet"],
+    "updatedAt": "2025-12-22T10:19:26Z",
+    "formattedDate": "Dec 2025"
+  },
+  {
+    "id": 890123456,
+    "name": "Dynamic-profile",
+    "fullName": "RforRan/Dynamic-profile",
+    "description": "Automated Jamstack developer portfolio generated at build-time using Astro, Tailwind CSS, and GitHub Actions.",
+    "url": "https://github.com/RforRan/Dynamic-profile",
+    "homepage": "https://rforran.github.io/Dynamic-profile/",
+    "stars": 1,
+    "forks": 0,
+    "primaryLanguage": "Astro",
+    "languageColor": "#ff5d01",
+    "topics": ["astro", "ssg", "portfolio", "jamstack", "github-actions"],
+    "updatedAt": "2026-11-03T23:00:00Z",
+    "formattedDate": "Nov 2026"
+  }
+]

@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import StatsSummary from '../components/StatsSummary.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Footer from '../components/Footer.astro';
+import { fetchGitHubProjects, fetchGitHubProfile } from '../data/github';
+
+// Build-Time Data Fetching (FR-1, FR-2)
+const [{ projects, isFallback }, profile] = await Promise.all([
+  fetchGitHubProjects(),
+  fetchGitHubProfile(),
+]);
+---
+
+<Layout
+  title={`${profile.name || profile.login} — Dynamic Developer Portfolio`}
+  description={profile.bio || 'High-performance dynamic developer portfolio powered by Astro and GitHub Actions.'}
+>
+  <Header profile={profile} isFallback={isFallback} />
+
+  <main>
+    <StatsSummary projects={projects} isFallback={isFallback} />
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      {projects.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {projects.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20 px-4 rounded-2xl border border-slate-800 bg-slate-900/40">
+          <svg
+            class="w-12 h-12 text-slate-500 mx-auto mb-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+            />
+          </svg>
+          <h3 class="text-base font-medium text-slate-300">No Public Repositories Found</h3>
+          <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+            Make sure your GitHub account has public repositories, or check your network connection during build.
+          </p>
+        </div>
+      )}
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
