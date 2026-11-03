@@ -44,3 +44,4 @@ Unlike traditional static portfolios that demand manual content edits or client-
 2. **Resilience Over Failure:** Third-party API hiccups degrade gracefully into cached/mock state, keeping deployments continuous.
 3. **Authentic Representation:** Real repository metrics, accurate primary languages, and direct source links represent true developer craft.
 4. **Impeccable Craft Floor:** Contrast, typography rhythm, semantic HTML, and zero decorative gimmicks.
+

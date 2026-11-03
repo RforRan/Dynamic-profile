@@ -61,3 +61,4 @@ export interface GitHubUserProfile {
   followers: number;
   following: number;
 }
+

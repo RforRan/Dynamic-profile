@@ -1,62 +1,43 @@
 # Design System
-## Dynamic Developer Portfolio (Impeccable Craft Specification)
+## Dynamic Developer Portfolio (Cyberpunk Impeccable Motion)
 
 <!-- impeccable:design-schema 1 -->
 
-## Visual World: The Precision Workbench (Obsidian & Signal)
-An authentic, developer-first aesthetic rooted in precision engineering, code aesthetics, and high-readability telemetry. The interface recedes into a deep, focused dark canvas, letting the developer's work and open-source metrics lead from the first viewport.
+## Visual World: Cyberpunk Neural Mainframe (Neon Blue & Cyber Yellow)
+A high-tech, futuristic cyberpunk user interface combining the mathematical layout precision of **IMPECCABLE** with the sharp, erratic motion design of **ANIME.JS**. The UI embodies an industrial, neon-infused terminal aesthetic while avoiding generic tropes.
 
-### 1. Color Palette & Surfaces
-Strictly calibrated to WCAG 2.1 AA (contrast ratio $\ge 4.5:1$ for body text, $\ge 3:1$ for large headings).
+### 1. Cyberpunk Design Tokens
+* **Canvas Ground:** `#040711` (Deep Dark Asphalt)
+* **Panel Surfaces:** `#0D1322` & `#11192C` (Gritty High-Tech Carbon Panels)
+* **Primary Neon Accents:**
+  * Cyber Yellow: `#FCEE09` (Primary high-voltage telemetry & buttons)
+  * Neon Cyan / Blue: `#00F0FF` (Circuit lines, interactive borders, status indicators)
+* **Secondary Neon Accent:**
+  * Neon Magenta / Hot Pink: `#FF0055` (Failsafe alerts & chromatic glitch trails)
+* **Grid & Scanlines:** 40px telemetry background grid + CRT scanline texture overlay (`pointer-events: none`).
 
-* **Ground / Canvas:**
-  * Background Root: `#090d16` (Deep Obsidian / Midnight Void)
-  * Card Surface: `#0f172a` (Elevated Slate Dark)
-  * Card Border: `rgba(255, 255, 255, 0.08)` (Subtle, crisp structure)
-  * Card Border Hover: `rgba(56, 189, 248, 0.35)` (Luminous Cyan Focus)
+### 2. Industrial UI Anatomy
+* **Chamfered Corners (`cyber-clip`, `cyber-clip-br`):**
+  Mathematical polygon clip-paths simulating stamped military-industrial carbon chassis.
+* **Telemetry HUD Elements:**
+  * Crosshairs (`+`) and technical hex memory markers (`HEX_0x...`).
+  * Terminal diagnostic headers (`SYS.ONLINE`, `NODE: AP-SOUTHEAST`, `RUNTIME: ASTRO.SSG`).
+* **Typography:**
+  * Geometric Tech Display: `Orbitron` & `Share Tech Mono` for titles, metrics, and labels.
+  * Body & Descriptions: `JetBrains Mono` and `Inter` for clarity.
+  * Tabular numeric alignment (`font-variant-numeric: tabular-nums`).
 
-* **Typography & Content:**
-  * Foreground Primary: `#f8fafc` (Slate 50 - Ultra high contrast)
-  * Foreground Secondary: `#94a3b8` (Slate 400 - Clear metadata, $\ge 4.8:1$ contrast)
-  * Foreground Tertiary / Muted: `#64748b` (Slate 500)
-
-* **Telemetry & Signal Accents:**
-  * Star & Metric Accent: `#fbbf24` (Amber 400)
-  * Fork & Graph Accent: `#94a3b8` (Slate 400)
-  * Live Sync Status Indicator: `#10b981` (Emerald 500 - Pulsing beacon)
-  * Focus Ring: `#38bdf8` (Sky 400 with 2px offset)
-
-### 2. Typography & Hierarchy
-* **Font Family:**
-  * Headings & UI: System font stack / Modernist Sans (`Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`)
-  * Data & Metrics: Monospace numerals with `tabular-nums` (`ui-monospace, SFMono-Regular, "Cascadia Code", "Fira Code", monospace`)
-* **Scale & Rhythm:**
-  * Display / Name: `text-3xl` to `text-4xl` (Mobile to Desktop), `font-bold`, `tracking-tight`
-  * Section Headers: `text-2xl`, `font-semibold`, `text-slate-100`
-  * Project Title: `text-lg`, `font-semibold`, `text-slate-100`
-  * Body & Description: `text-sm`, `leading-relaxed`, `text-slate-400`
-  * Badges & Tags: `text-xs`, `font-medium`, `tracking-wide`
-
-### 3. Craft Floor Rules (Hard Constraints)
-Per Impeccable Craft Floor:
-1. **No Gradient Text:** Headlines rely on optical scale, weight, and contrast.
-2. **No Kicker / Eyebrow Text:** Let the headings speak with their own structural weight.
-3. **No Emoji as Icons:** All indicators use clean, inline vector SVG paths with consistent stroke geometry.
-4. **No Heavy Fake Glassmorphism:** Clean dark cards with subtle borders and authentic elevation.
-5. **Full Browser Surface Polish:**
-   * Custom selection highlight (`::selection { background: rgba(56, 189, 248, 0.25); color: #f8fafc; }`).
-   * Custom smooth scrollbar with dark track and slate thumb.
-   * Visible, accessible focus rings on all interactive elements (`focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900`).
-
-### 4. Layout & Responsive Composition
-* **Container:** Max-width `max-w-6xl`, centered with fluid horizontal padding (`px-4 sm:px-6 lg:px-8`).
-* **Header / Profile Section:** Compact hero containing avatar/identicon, owner handle (`@RforRan`), concise positioning, sync telemetry pill, and direct GitHub profile button.
-* **Filter & Stats Bar:** Real-time project counter, sort status, and language breakdown.
-* **Project Grid:**
-  * Mobile (`< 640px`): 1 column
-  * Tablet (`640px - 1024px`): 2 columns
-  * Desktop (`> 1024px`): 3 columns
-* **Project Card Anatomy:**
-  * Top: Repository Name + External Link indicator
-  * Middle: Repository Description (2-3 lines with clean truncate/wrap)
-  * Bottom: Primary Language Badge + Star count + Fork count
+### 3. Anime.js Cyberpunk Motion Rules
+1. **The "Glitch & Flicker" Effect:**
+   Keyframed irregular durations (50ms - 200ms) with steps easing (`steps(4)` / `steps(5)`), rapidly cycling `opacity: [0, 1, 0.2, 1, 0.6, 1]` and micro `skewX: [0, -2, 2, 0]` to simulate hardware power surges.
+2. **High-Speed Aggressive Easing:**
+   `easeOutExpo` for sudden snaps followed by immediate stops; eliminating sluggish animations.
+3. **Sequential Grid Boot-Up (`anime.stagger`):**
+   Rapid 20ms–30ms stagger timeline simulating system initialization:
+   * Circuit lines draw in via `strokeDashoffset`.
+   * Telemetry counters count up rapidly.
+   * Project cards stagger-boot with scale and micro-snap.
+4. **Interactive Hover Surge:**
+   Card mouse-enter triggers erratic glitch transform, neon cyan glow surge, and title chromatic flash.
+5. **Periodic Ambient Telemetry Pulse:**
+   Random intervals (3s - 7s) trigger micro-flicker on status beacons and terminal headers.

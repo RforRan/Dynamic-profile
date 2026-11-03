@@ -199,3 +199,4 @@ export async function fetchGitHubProfile(): Promise<GitHubUserProfile> {
 
   return fallbackProfile;
 }
+

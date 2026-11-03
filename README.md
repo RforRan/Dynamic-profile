@@ -98,3 +98,4 @@ npm run preview
    ```
 4. Pipeline GitHub Actions akan otomatis melakukan kompilasi dan mendeploy web portofolio ke alamat:
    `https://rforran.github.io/Dynamic-profile/`
+

@@ -2,33 +2,33 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mt-20 border-t border-slate-800/80 bg-slate-950/80 py-10 text-xs font-mono text-slate-500">
+<footer class="mt-20 border-t border-cyber-border bg-cyber-asphalt/90 py-10 text-xs font-mono text-cyber-muted relative">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-2">
-      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+      <span class="w-2 h-2 bg-cyber-cyan shadow-neon-cyan"></span>
       <span>
-        Generated with <strong class="text-slate-300 font-semibold">Astro SSG</strong> & <strong class="text-slate-300 font-semibold">GitHub Actions</strong>
+        CORE: <strong class="text-cyber-cyan font-tech">ASTRO.SSG</strong> // AUTOMATION: <strong class="text-cyber-yellow font-tech">GITHUB_ACTIONS</strong>
       </span>
     </div>
 
-    <div class="flex items-center gap-6 text-slate-400">
+    <div class="flex items-center gap-6 text-cyber-subtext">
       <a
         href="https://github.com/RforRan/Dynamic-profile"
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-400 rounded"
+        class="hover:text-cyber-cyan transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-cyan"
       >
-        Source Code
+        [SOURCE_CODE]
       </a>
       <a
         href="https://github.com/RforRan"
         target="_blank"
         rel="noopener noreferrer"
-        class="hover:text-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-400 rounded"
+        class="hover:text-cyber-yellow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-yellow"
       >
-        GitHub Profile
+        [GITHUB_MAINFRAME]
       </a>
-      <span>&copy; {currentYear} Randi (RforRan)</span>
+      <span class="text-cyber-muted">&copy; {currentYear} RANDI // RFORRAN</span>
     </div>
   </div>
 </footer>

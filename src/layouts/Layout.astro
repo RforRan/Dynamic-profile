@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'Randi (RforRan) — Dynamic Developer Portfolio',
-  description = 'High-performance Jamstack developer portfolio automatically synchronized from GitHub at build-time using Astro and GitHub Actions.',
+  title = 'RforRan // NEURAL_DEV_PORTFOLIO',
+  description = 'Cyberpunk-themed high-performance Jamstack developer portfolio with Anime.js motion and build-time GitHub ingestion.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -44,12 +44,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800;900&family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
   </head>
-  <body class="bg-canvas text-slate-100 flex flex-col min-h-screen antialiased selection:bg-sky-500/20 selection:text-slate-100">
-    <div class="flex-grow">
+  <body class="bg-cyber-bg text-slate-100 flex flex-col min-h-screen relative antialiased cyber-grid-bg">
+    <!-- Ambient CRT Scanline Overlay -->
+    <div class="fixed inset-0 scanlines-overlay z-50 pointer-events-none opacity-30"></div>
+
+    <!-- Top Neon HUD Cable Accent -->
+    <div class="w-full h-1 bg-gradient-to-r from-cyber-cyan via-cyber-yellow to-cyber-pink shadow-neon-cyan z-40 fixed top-0 left-0"></div>
+
+    <div class="flex-grow relative z-10">
       <slot />
     </div>
   </body>

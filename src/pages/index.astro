@@ -6,7 +6,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import Footer from '../components/Footer.astro';
 import { fetchGitHubProjects, fetchGitHubProfile } from '../data/github';
 
-// Build-Time Data Fetching (FR-1, FR-2)
+// Build-Time Data Ingestion
 const [{ projects, isFallback }, profile] = await Promise.all([
   fetchGitHubProjects(),
   fetchGitHubProfile(),
@@ -14,8 +14,8 @@ const [{ projects, isFallback }, profile] = await Promise.all([
 ---
 
 <Layout
-  title={`${profile.name || profile.login} — Dynamic Developer Portfolio`}
-  description={profile.bio || 'High-performance dynamic developer portfolio powered by Astro and GitHub Actions.'}
+  title={`${profile.name || profile.login} // NEURAL_DEV_PORTFOLIO`}
+  description={profile.bio || 'High-performance dynamic developer portfolio with cyberpunk anime.js motion.'}
 >
   <Header profile={profile} isFallback={isFallback} />
 
@@ -30,9 +30,9 @@ const [{ projects, isFallback }, profile] = await Promise.all([
           ))}
         </div>
       ) : (
-        <div class="text-center py-20 px-4 rounded-2xl border border-slate-800 bg-slate-900/40">
+        <div class="text-center py-20 px-4 border border-cyber-border bg-cyber-panel/60 cyber-clip-br">
           <svg
-            class="w-12 h-12 text-slate-500 mx-auto mb-3"
+            class="w-12 h-12 text-cyber-cyan mx-auto mb-3"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -44,9 +44,9 @@ const [{ projects, isFallback }, profile] = await Promise.all([
               d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
             />
           </svg>
-          <h3 class="text-base font-medium text-slate-300">No Public Repositories Found</h3>
-          <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-            Make sure your GitHub account has public repositories, or check your network connection during build.
+          <h3 class="text-base font-tech font-bold text-cyber-yellow tracking-wider">[NO_PAYLOAD_DETECTED]</h3>
+          <p class="text-xs font-mono text-cyber-muted mt-1 max-w-sm mx-auto">
+            Zero public repositories returned by the neural query. Check connection or user permissions.
           </p>
         </div>
       )}
@@ -54,4 +54,15 @@ const [{ projects, isFallback }, profile] = await Promise.all([
   </main>
 
   <Footer />
+
+  <!-- Cyberpunk Anime.js Client Hydration -->
+  <script>
+    import { initCyberpunkMotion } from '../scripts/cyberpunk-motion';
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => initCyberpunkMotion());
+    } else {
+      initCyberpunkMotion();
+    }
+  </script>
 </Layout>
