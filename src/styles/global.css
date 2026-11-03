@@ -155,3 +155,11 @@
 .neon-glow-yellow {
   filter: drop-shadow(0 0 6px rgba(252, 238, 9, 0.6));
 }
+
+/* Performant GPU Acceleration Layer for Glitch Mutations */
+.neon-glitch-gpu {
+  will-change: opacity, transform, filter;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+

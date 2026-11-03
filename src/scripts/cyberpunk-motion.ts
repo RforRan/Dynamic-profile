@@ -1,13 +1,21 @@
 import anime from 'animejs';
+import { createNeonGlitchEngine, type NeonGlitchController } from './neon-glitch-engine';
 
 /**
- * Cyberpunk Impeccable Motion Controller
- * Powered by Anime.js with high-speed easings, erratic glitch keyframes,
- * sequential stagger boot-ups, and SVG vector tech animations.
+ * Cyberpunk Motion & Kinetic Engine Orchestrator
+ * Integrates sequential grid boot-up with the Impeccable Random Neon Glitch Engine.
  */
 
-export function initCyberpunkMotion() {
-  if (typeof window === 'undefined') return;
+let activeGlitchEngine: NeonGlitchController | null = null;
+
+export function initCyberpunkMotion(): () => void {
+  if (typeof window === 'undefined') return () => {};
+
+  // Clean up any existing instances first (prevent duplicate listeners on re-run)
+  if (activeGlitchEngine) {
+    activeGlitchEngine.destroy();
+    activeGlitchEngine = null;
+  }
 
   // 1. SEQUENTIAL GRID BOOT-UP TIMELINE
   const bootTimeline = anime.timeline({
@@ -20,44 +28,44 @@ export function initCyberpunkMotion() {
       targets: '.hud-path',
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: 'easeInOutSine',
-      duration: 650,
-      delay: anime.stagger(40),
+      duration: 600,
+      delay: anime.stagger(30),
     })
     // Step 2: HUD Header & Diagnostics Glitch Entrance
     .add(
       {
         targets: '.hud-header-element',
         opacity: [0, 1, 0.2, 1, 0.6, 1],
-        translateX: [-15, 0],
-        skewX: [8, 0],
-        duration: 280,
+        translateX: [-12, 0],
+        skewX: [6, 0],
+        duration: 260,
         easing: 'steps(5)',
       },
-      '-=300'
+      '-=280'
     )
     // Step 3: Telemetry Matrix Counters rapid digital count
     .add(
       {
         targets: '.hud-telemetry-item',
         opacity: [0, 1],
-        translateY: [12, 0],
-        duration: 350,
-        delay: anime.stagger(30),
+        translateY: [10, 0],
+        duration: 320,
+        delay: anime.stagger(25),
       },
-      '-=150'
+      '-=140'
     )
-    // Step 4: Staggered Project Cards Boot-Up (Very rapid, 20ms stagger)
+    // Step 4: Staggered Project Cards Boot-Up (25ms stagger)
     .add(
       {
         targets: '.cyber-card',
         opacity: [0, 0.4, 0.1, 1],
-        scale: [0.95, 1],
-        translateY: [20, 0],
-        duration: 400,
-        delay: anime.stagger(30, { start: 50 }),
+        scale: [0.96, 1],
+        translateY: [16, 0],
+        duration: 380,
+        delay: anime.stagger(25, { start: 40 }),
         easing: 'easeOutExpo',
       },
-      '-=200'
+      '-=180'
     );
 
   // 2. COUNTER DIGITAL BOOT SEQUENCE
@@ -70,7 +78,7 @@ export function initCyberpunkMotion() {
       targets: obj,
       val: targetValue,
       round: 1,
-      duration: 1200,
+      duration: 1100,
       easing: 'easeOutExpo',
       update: () => {
         el.textContent = obj.val.toString();
@@ -78,93 +86,90 @@ export function initCyberpunkMotion() {
     });
   });
 
-  // 3. INTERACTIVE CARD HOVER GLITCH & BORDER SURGE
+  // 3. INITIALIZE IMPECCABLE NEON GLITCH ENGINE
+  const glitchEngine = createNeonGlitchEngine({
+    textSelectors: ['.cyber-glitch-header', '.cyber-card-title'],
+    containerSelectors: ['.cyber-card', '.hud-telemetry-item'],
+    svgSelectors: ['.hud-path', '.cyber-status-pulse'],
+    minCooldown: 900,
+    maxCooldown: 3800,
+    minBurstDuration: 45,
+    maxBurstDuration: 220,
+  });
+
+  activeGlitchEngine = glitchEngine;
+
+  // Start ambient random glitch loop after initial boot animation settles
+  setTimeout(() => {
+    if (activeGlitchEngine === glitchEngine) {
+      glitchEngine.start();
+    }
+  }, 1000);
+
+  // 4. INTERACTIVE CARD HOVER & FOCUS GLITCH SURGE
   const cards = document.querySelectorAll<HTMLElement>('.cyber-card');
+  const cardHandlers = new Map<HTMLElement, { enter: () => void; leave: () => void }>();
+
   cards.forEach((card) => {
     const borderGlow = card.querySelector<HTMLElement>('.cyber-card-glow');
     const title = card.querySelector<HTMLElement>('.cyber-card-title');
 
-    card.addEventListener('mouseenter', () => {
-      // Rapid erratic glitch transform
-      anime({
-        targets: card,
-        skewX: [0, -1.8, 1.2, -0.6, 0],
-        translateX: [0, -2, 2, 0],
-        duration: 160,
-        easing: 'steps(4)',
-      });
+    const handleEnter = () => {
+      // Trigger instantaneous electrical spark via the glitch engine
+      glitchEngine.triggerBurst(card, 'container');
+      if (title) glitchEngine.triggerBurst(title, 'text');
 
-      // Neon pulse surge
       if (borderGlow) {
         anime({
           targets: borderGlow,
-          opacity: [0.3, 1, 0.6, 0.95],
-          duration: 180,
+          opacity: [0.3, 0.95],
+          duration: 160,
           easing: 'easeOutQuad',
         });
       }
+    };
 
-      // Title neon color glitch flash
-      if (title) {
-        anime({
-          targets: title,
-          color: ['#00F0FF', '#FF0055', '#FCEE09', '#00F0FF'],
-          duration: 220,
-          easing: 'steps(3)',
-        });
-      }
-    });
-
-    card.addEventListener('mouseleave', () => {
+    const handleLeave = () => {
       anime({
         targets: card,
         skewX: 0,
         translateX: 0,
-        duration: 150,
+        duration: 140,
         easing: 'easeOutExpo',
       });
 
       if (borderGlow) {
         anime({
           targets: borderGlow,
-          opacity: 0.2,
-          duration: 250,
+          opacity: 0,
+          duration: 200,
           easing: 'easeOutQuad',
         });
       }
-    });
+    };
+
+    card.addEventListener('mouseenter', handleEnter);
+    card.addEventListener('mouseleave', handleLeave);
+
+    cardHandlers.set(card, { enter: handleEnter, leave: handleLeave });
   });
 
-  // 4. PERIODIC AMBIENT POWER SURGE & TELEMETRY FLICKER
-  function triggerAmbientFlicker() {
-    const statusDot = document.querySelector<HTMLElement>('.cyber-status-pulse');
-    const headerTitle = document.querySelector<HTMLElement>('.cyber-glitch-header');
-
-    if (statusDot) {
-      anime({
-        targets: statusDot,
-        opacity: [1, 0.1, 0.9, 0.2, 1],
-        scale: [1, 1.4, 0.9, 1.2, 1],
-        duration: 180,
-        easing: 'steps(5)',
-      });
+  // 5. RETURN DETERMINISTIC CLEANUP FUNCTION (LIFECYCLE MANAGEMENT)
+  return () => {
+    glitchEngine.destroy();
+    if (activeGlitchEngine === glitchEngine) {
+      activeGlitchEngine = null;
     }
 
-    if (headerTitle && Math.random() > 0.4) {
-      anime({
-        targets: headerTitle,
-        skewX: [0, -2.5, 1.5, 0],
-        opacity: [1, 0.7, 1],
-        duration: 120,
-        easing: 'steps(3)',
-      });
-    }
+    cards.forEach((card) => {
+      const handler = cardHandlers.get(card);
+      if (handler) {
+        card.removeEventListener('mouseenter', handler.enter);
+        card.removeEventListener('mouseleave', handler.leave);
+      }
+      anime.remove(card);
+    });
 
-    // Schedule next erratic surge between 3000ms and 7000ms
-    const nextInterval = 3000 + Math.random() * 4000;
-    setTimeout(triggerAmbientFlicker, nextInterval);
-  }
-
-  // Start periodic ambient flicker after initial boot
-  setTimeout(triggerAmbientFlicker, 1500);
+    cardHandlers.clear();
+  };
 }

@@ -55,14 +55,36 @@ const [{ projects, isFallback }, profile] = await Promise.all([
 
   <Footer />
 
-  <!-- Cyberpunk Anime.js Client Hydration -->
+  <!-- Cyberpunk Anime.js Client Hydration with Strict Lifecycle Cleanup -->
   <script>
     import { initCyberpunkMotion } from '../scripts/cyberpunk-motion';
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => initCyberpunkMotion());
-    } else {
-      initCyberpunkMotion();
+    let cleanup: (() => void) | null = null;
+
+    function mount() {
+      if (cleanup) cleanup();
+      cleanup = initCyberpunkMotion();
     }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', mount);
+    } else {
+      mount();
+    }
+
+    // Astro View Transitions & Page Unload Cleanup (Zero Memory Leaks)
+    document.addEventListener('astro:before-swap', () => {
+      if (cleanup) {
+        cleanup();
+        cleanup = null;
+      }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (cleanup) {
+        cleanup();
+        cleanup = null;
+      }
+    });
   </script>
 </Layout>
