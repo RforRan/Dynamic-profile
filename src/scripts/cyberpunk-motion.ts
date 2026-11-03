@@ -86,15 +86,16 @@ export function initCyberpunkMotion(): () => void {
     });
   });
 
-  // 3. INITIALIZE IMPECCABLE NEON GLITCH ENGINE
+  // 3. INITIALIZE IMPECCABLE NEON GLITCH ENGINE (POLISHED CADENCE)
+  // Frekuensi lebih sering (400ms - 1600ms) & durasi transisi lebih panjang (350ms - 850ms)
   const glitchEngine = createNeonGlitchEngine({
     textSelectors: ['.cyber-glitch-header', '.cyber-card-title'],
     containerSelectors: ['.cyber-card', '.hud-telemetry-item'],
     svgSelectors: ['.hud-path', '.cyber-status-pulse'],
-    minCooldown: 900,
-    maxCooldown: 3800,
-    minBurstDuration: 45,
-    maxBurstDuration: 220,
+    minCooldown: 400,
+    maxCooldown: 1600,
+    minBurstDuration: 350,
+    maxBurstDuration: 850,
   });
 
   activeGlitchEngine = glitchEngine;
@@ -104,7 +105,7 @@ export function initCyberpunkMotion(): () => void {
     if (activeGlitchEngine === glitchEngine) {
       glitchEngine.start();
     }
-  }, 1000);
+  }, 800);
 
   // 4. INTERACTIVE CARD HOVER & FOCUS GLITCH SURGE
   const cards = document.querySelectorAll<HTMLElement>('.cyber-card');
@@ -115,16 +116,16 @@ export function initCyberpunkMotion(): () => void {
     const title = card.querySelector<HTMLElement>('.cyber-card-title');
 
     const handleEnter = () => {
-      // Trigger instantaneous electrical spark via the glitch engine
-      glitchEngine.triggerBurst(card, 'container');
-      if (title) glitchEngine.triggerBurst(title, 'text');
+      // Trigger electrical spark via glitch engine dengan durasi yang lebih terasa (450ms)
+      glitchEngine.triggerBurst(card, 'container', 450);
+      if (title) glitchEngine.triggerBurst(title, 'text', 450);
 
       if (borderGlow) {
         anime({
           targets: borderGlow,
-          opacity: [0.3, 0.95],
-          duration: 160,
-          easing: 'easeOutQuad',
+          opacity: [0.3, 1, 0.4, 0.9, 0.3, 0.95],
+          duration: 450,
+          easing: 'linear',
         });
       }
     };
@@ -134,15 +135,15 @@ export function initCyberpunkMotion(): () => void {
         targets: card,
         skewX: 0,
         translateX: 0,
-        duration: 140,
-        easing: 'easeOutExpo',
+        duration: 180,
+        easing: 'easeOutQuad',
       });
 
       if (borderGlow) {
         anime({
           targets: borderGlow,
           opacity: 0,
-          duration: 200,
+          duration: 300,
           easing: 'easeOutQuad',
         });
       }
