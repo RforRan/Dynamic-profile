@@ -43,7 +43,7 @@ export const portfolioConfig: PortfolioConfig = {
   // 1. AKUN GITHUB
   // ============================================================================
   // Username GitHub Anda (data repositori akan diambil secara otomatis dari sini)
-  githubUsername: 'RforRan',
+  githubUsername: 'Rforran',
 
   // Nama repositori GitHub proyek ini
   repositoryName: 'Dynamic-profile',
@@ -88,3 +88,4 @@ export const portfolioConfig: PortfolioConfig = {
 };
 
 export default portfolioConfig;
+
