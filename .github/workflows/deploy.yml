@@ -39,8 +39,6 @@ jobs:
       - name: Compile Astro SSG
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLIC_GITHUB_USERNAME: 'RforRan'
-          BASE_PATH: '/Dynamic-profile'
         run: npm run build
 
       - name: Upload GitHub Pages Artifact
@@ -59,4 +57,3 @@ jobs:
       - name: Deploy Artifact to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

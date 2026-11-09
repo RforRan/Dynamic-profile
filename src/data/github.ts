@@ -1,7 +1,8 @@
 import type { GitHubRawRepo, PortfolioProject, GitHubUserProfile } from '../types/github';
 import fallbackRepos from './fallback-repos.json';
+import { portfolioConfig } from '../../portfolio.config';
 
-const GITHUB_USERNAME = process.env.PUBLIC_GITHUB_USERNAME || 'RforRan';
+const GITHUB_USERNAME = process.env.PUBLIC_GITHUB_USERNAME || portfolioConfig.githubUsername;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 /**
@@ -154,10 +155,10 @@ export async function fetchGitHubProjects(): Promise<{
 export async function fetchGitHubProfile(): Promise<GitHubUserProfile> {
   const fallbackProfile: GitHubUserProfile = {
     login: GITHUB_USERNAME,
-    name: 'Randi',
+    name: portfolioConfig.name,
     avatar_url: `https://github.com/${GITHUB_USERNAME}.png`,
     html_url: `https://github.com/${GITHUB_USERNAME}`,
-    bio: 'Software Engineer & Fullstack Developer passionate about high-performance Jamstack, web GIS, and open source.',
+    bio: portfolioConfig.bio,
     public_repos: 10,
     followers: 0,
     following: 0,
@@ -184,10 +185,10 @@ export async function fetchGitHubProfile(): Promise<GitHubUserProfile> {
       const data = await response.json();
       return {
         login: data.login || GITHUB_USERNAME,
-        name: data.name || data.login || 'Randi',
+        name: data.name || portfolioConfig.name || data.login,
         avatar_url: data.avatar_url || fallbackProfile.avatar_url,
         html_url: data.html_url || fallbackProfile.html_url,
-        bio: data.bio || fallbackProfile.bio,
+        bio: data.bio || portfolioConfig.bio,
         public_repos: data.public_repos ?? fallbackProfile.public_repos,
         followers: data.followers ?? 0,
         following: data.following ?? 0,
@@ -199,4 +200,3 @@ export async function fetchGitHubProfile(): Promise<GitHubUserProfile> {
 
   return fallbackProfile;
 }
-

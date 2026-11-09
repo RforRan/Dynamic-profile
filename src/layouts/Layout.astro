@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { portfolioConfig } from '../../portfolio.config';
 
 interface Props {
   title?: string;
@@ -7,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'RforRan // NEURAL_DEV_PORTFOLIO',
-  description = 'Cyberpunk-themed high-performance Jamstack developer portfolio with Anime.js motion and build-time GitHub ingestion.',
+  title = `${portfolioConfig.name} // ${portfolioConfig.title}`,
+  description = portfolioConfig.bio,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);

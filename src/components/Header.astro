@@ -1,5 +1,6 @@
 ---
 import type { GitHubUserProfile } from '../types/github';
+import { portfolioConfig } from '../../portfolio.config';
 
 interface Props {
   profile: GitHubUserProfile;
@@ -15,10 +16,10 @@ const { profile, isFallback } = Astro.props;
     <div class="flex items-center gap-4">
       <span class="text-cyber-cyan flex items-center gap-1.5">
         <span class="w-1.5 h-1.5 bg-cyber-cyan inline-block"></span>
-        SYS.ONLINE
+        {portfolioConfig.hud.statusLabel}
       </span>
-      <span>NODE: AP-SOUTHEAST</span>
-      <span>RUNTIME: ASTRO.SSG</span>
+      <span>{portfolioConfig.hud.nodeLocation}</span>
+      <span>{portfolioConfig.hud.runtimeLabel}</span>
     </div>
     <div class="flex items-center gap-4">
       <span>LATENCY: 0.00 MS [BUILD-TIME]</span>

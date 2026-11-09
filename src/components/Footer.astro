@@ -1,5 +1,9 @@
 ---
+import { portfolioConfig } from '../../portfolio.config';
+
 const currentYear = new Date().getFullYear();
+const sourceCodeUrl = `https://github.com/${portfolioConfig.githubUsername}/${portfolioConfig.repositoryName}`;
+const githubUrl = portfolioConfig.social.github || `https://github.com/${portfolioConfig.githubUsername}`;
 ---
 
 <footer class="mt-20 border-t border-cyber-border bg-cyber-asphalt/90 py-10 text-xs font-mono text-cyber-muted relative">
@@ -7,28 +11,63 @@ const currentYear = new Date().getFullYear();
     <div class="flex items-center gap-2">
       <span class="w-2 h-2 bg-cyber-cyan shadow-neon-cyan"></span>
       <span>
-        CORE: <strong class="text-cyber-cyan font-tech">ASTRO.SSG</strong> // AUTOMATION: <strong class="text-cyber-yellow font-tech">GITHUB_ACTIONS</strong>
+        CORE: <strong class="text-cyber-cyan font-tech">{portfolioConfig.hud.runtimeLabel}</strong> // AUTOMATION: <strong class="text-cyber-yellow font-tech">GITHUB_ACTIONS</strong>
       </span>
     </div>
 
-    <div class="flex items-center gap-6 text-cyber-subtext">
+    <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-cyber-subtext">
       <a
-        href="https://github.com/RforRan/Dynamic-profile"
+        href={sourceCodeUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="hover:text-cyber-cyan transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-cyan"
       >
         [SOURCE_CODE]
       </a>
+
       <a
-        href="https://github.com/RforRan"
+        href={githubUrl}
         target="_blank"
         rel="noopener noreferrer"
         class="hover:text-cyber-yellow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-yellow"
       >
         [GITHUB_MAINFRAME]
       </a>
-      <span class="text-cyber-muted">&copy; {currentYear} RANDI // RFORRAN</span>
+
+      {portfolioConfig.social.linkedin && (
+        <a
+          href={portfolioConfig.social.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-cyber-cyan transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-cyan"
+        >
+          [LINKEDIN]
+        </a>
+      )}
+
+      {portfolioConfig.social.twitter && (
+        <a
+          href={portfolioConfig.social.twitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-cyber-yellow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-yellow"
+        >
+          [TWITTER]
+        </a>
+      )}
+
+      {portfolioConfig.social.email && (
+        <a
+          href={portfolioConfig.social.email}
+          class="hover:text-cyber-cyan transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyber-cyan"
+        >
+          [CONTACT_NODE]
+        </a>
+      )}
+
+      <span class="text-cyber-muted">
+        &copy; {currentYear} {portfolioConfig.name.toUpperCase()} // {portfolioConfig.githubUsername.toUpperCase()}
+      </span>
     </div>
   </div>
 </footer>

@@ -9,6 +9,37 @@
 
 ---
 
+## ⚡ Panduan Kustomisasi Cepat (Hanya Perlu Edit 1 File!)
+
+Siapa pun yang ingin menggunakan portofolio ini **hanya perlu mengedit 1 file saja**:
+
+👉 **[`portfolio.config.ts`](./portfolio.config.ts)**
+
+Buka file tersebut di text editor dan cukup ubah data berikut:
+```typescript
+export const portfolioConfig = {
+  // 1. Ganti dengan username GitHub dan nama repo Anda
+  githubUsername: 'username-anda',
+  repositoryName: 'nama-repo-anda',
+
+  // 2. Ganti nama dan bio Anda
+  name: 'Nama Anda',
+  title: 'FULLSTACK_ENGINEER',
+  bio: 'Deskripsi singkat keahlian dan minat Anda.',
+
+  // 3. Tautan media sosial Anda (opsional)
+  social: {
+    github: 'https://github.com/username-anda',
+    linkedin: 'https://linkedin.com/in/username-anda',
+    twitter: '',
+    email: 'mailto:email@domain.com',
+  },
+};
+```
+*Semua bagian website (pemanggilan API GitHub, header, footer, SEO title, dan konfigurasi base path) akan langsung otomatis beradaptasi!*
+
+---
+
 ## Architecture Highlights
 
 1. **Zero Client-Side Fetching:** Seluruh pemanggilan GitHub API dijalankan saat proses kompilasi statis (`npm run build`). Browser pengunjung menerima 100% HTML statis tanpa loading spinner dan bebas dari limitasi rate limit IP (60 req/jam).
@@ -22,6 +53,7 @@
 
 ```
 Dynamic-profile/
+├── portfolio.config.ts          # ⭐️ SATU-SATUNYA FILE YANG PERLU DIEDIT!
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml           # GitHub Actions CI/CD to GitHub Pages
@@ -45,7 +77,7 @@ Dynamic-profile/
 │   │   └── global.css           # Tailwind base & custom scrollbar/selection
 │   └── types/
 │       └── github.ts            # TypeScript data contracts
-├── astro.config.mjs             # Astro SSG configuration
+├── astro.config.mjs             # Astro SSG configuration (membaca portfolio.config.ts)
 ├── DESIGN.md                    # Impeccable design system specification
 ├── package.json                 # Project dependencies & scripts
 ├── PRD.md                       # Product Requirement Document (PRD v1.0.0)
@@ -93,9 +125,8 @@ npm run preview
 3. Push perubahan ke branch `main`:
    ```bash
    git add .
-   git commit -m "feat: complete jamstack portfolio with astro and github actions"
+   git commit -m "feat: customize portfolio with portfolio.config.ts"
    git push origin main
    ```
 4. Pipeline GitHub Actions akan otomatis melakukan kompilasi dan mendeploy web portofolio ke alamat:
-   `https://rforran.github.io/Dynamic-profile/`
-
+   `https://<username>.github.io/<repository-name>/`
